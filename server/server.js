@@ -11,7 +11,7 @@ const app = express(); // Create an Express application
 
 app.use(cors(
   {
-    origin: ['http://localhost:5173'], // Your frontend URL
+    origin: ['http://localhost:5173', "https://aitexttoimg.vercel.app"], // Your frontend URL
     credentials: true
   }
 )); // Enable CORS for all routes // Middleware to handle CORS // Cross-Origin Resource Sharing allows your server to accept requests from different origins
