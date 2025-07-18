@@ -19,7 +19,7 @@ app.use(express.json()); // Parse JSON bodies // Middleware to parse JSON reques
 
 await connectDB(); // Connect to MongoDB database // Call the function to connect to the database
 
-app.use('/api/user', userRouter) // Use user routes for handling user-related requests
+app.use('/api/user', userRouter) // Use user routes for handling user-related requests  // /api/user is the base path for user-related routes
 app.use('/api/image', imageRouter); // Use image routes for handling image generation requests
 
 app.get('/', (req, res) => res.send('Hello World!'));

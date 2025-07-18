@@ -8,6 +8,7 @@ import Footer from './components/Footer'
 import Login from './components/Login'
 import { AppContext } from './context/AppContext'
 import { ToastContainer } from 'react-toastify';
+import Dashboard from './pages/Dashboard'
 
 const App = () => {
 
@@ -22,6 +23,7 @@ const App = () => {
           <Route path="/" element={<Home/>} />
           <Route path="/result" element={<Result/>} />
           <Route path="/buy" element={<BuyCredit/>} />
+          <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
       <Footer/>
     </div> 
