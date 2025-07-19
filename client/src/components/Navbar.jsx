@@ -70,7 +70,7 @@ const Navbar = () => {
   return (
     <div className='flex items-center justify-between py-4 relative'>
       <Link to='/'>
-        <img src={assets.logo} alt="logo" className='w-28 sm:w-32 lg:w-40' />
+        <img src={assets.logo} alt="logo" className='w-28 sm:w-32 lg:w-30' />
       </Link>
 
       {/* Mobile Menu Icon */}
@@ -95,7 +95,7 @@ const Navbar = () => {
               <img src={assets.profile_icon} className='w-10 drop-shadow' alt="profile_icon" />
               <div className='absolute hidden group-hover:block top-0 right-0 z-10 text-black rounded pt-12'>
                 <ul className='list-none m-0 p-2 bg-white rounded-md text-sm'>
-                  <li onClick={logout} className='py-1 px-10 cursor-pointer pr-10'>Logout</li>
+                  <li onClick={() => { logout(); navigate('/'); }} className='py-1 px-10 cursor-pointer pr-10'>Logout</li>
                 </ul>
               </div>
             </div>
@@ -122,7 +122,7 @@ const Navbar = () => {
               <p className='cursor-pointer' onClick={() => { navigate('/dashboard'); closeMenu(); }}>Dashboard</p>
 
               <p className='text-gray-600'>Hi, {user.name}</p>
-              <button onClick={() => { logout(); closeMenu(); }} className='text-left text-red-600'>Logout</button>
+              <button onClick={() => { logout(); closeMenu(); navigate('/'); }} className='text-left text-red-600'>Logout</button>
             </>
           ) : (
             <>

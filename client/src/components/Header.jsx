@@ -36,7 +36,7 @@ const Header = () => {
             ))}
         </motion.div>
 
-        <motion.p className='mt-2 text-neutral-600' initial={{ opacity: 0}} transition={{delay: 1.2, duration: 0.8 }} animate={{opacity: 1}}>Generated images from imagify</motion.p>
+        <motion.p className='mt-2 text-neutral-600' initial={{ opacity: 0}} transition={{delay: 1.2, duration: 0.8 }} animate={{opacity: 1}}>Generated images from Text2Vision</motion.p>
     </motion.div>
   )
 }
