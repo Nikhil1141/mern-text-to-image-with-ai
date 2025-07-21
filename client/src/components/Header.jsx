@@ -14,7 +14,8 @@ const Header = () => {
       navigate('/result');
     }
     else {
-      setShowLogin(true);
+      // setShowLogin(true);
+      navigate('/login')
     }
   }
 
