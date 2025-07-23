@@ -36,14 +36,18 @@ const Navbar = () => {
             <p className='cursor-pointer text-gray-600 max-sm:hidden pl-4' onClick={() => navigate('/dashboard')}>Dashboard</p>
 
             <p className='text-gray-600 max-sm:hidden pl-4'>Hi, {user.name}</p>
-            <div className='relative group'>
+            {/* <div className='relative group'>
               <img src={assets.profile_icon} className='w-10 drop-shadow' alt="profile_icon" />
               <div className='absolute hidden group-hover:block top-0 right-0 z-10 text-black rounded pt-12'>
                 <ul className='list-none m-0 p-2 bg-white rounded-md text-sm'>
                   <li onClick={() => { logout(); navigate('/'); }} className='py-1 px-10 cursor-pointer pr-10'>Logout</li>
                 </ul>
               </div>
-            </div>
+            </div> */}
+            <button
+              onClick={() => { logout(); navigate('/'); }}
+              className='cursor-pointer hidden sm:inline-flex ml-4 text-sm px-5 py-2 rounded-full bg-red-100 text-red-600 hover:bg-red-200 transition-all duration-300'
+            >Logout</button>
           </>
         ) : (
           <>
