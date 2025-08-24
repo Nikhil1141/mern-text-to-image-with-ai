@@ -1,6 +1,8 @@
 import React, { useEffect, useState, useContext, memo } from "react";
 import axios from "axios";
 import { AppContext } from "../context/AppContext";
+import { toast } from "react-toastify";
+import { Trash2 } from "lucide-react"; // nice delete icon
 
 const Dashboard = () => {
   const { backendUrl, token } = useContext(AppContext);
@@ -24,6 +26,20 @@ const Dashboard = () => {
     }
   };
 
+  const handleDelete = async (id) => {
+    try {
+    console.log("Deleting:", `${backendUrl}/api/image/delete/${id}`);
+    await axios.delete(`${backendUrl}/api/image/delete/${id}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    setHistory(history.filter((item) => item._id !== id));
+    toast.success("Image deleted successfully!");
+  } catch (error) {
+    console.error("Delete error full:", error);
+    toast.error("Failed to delete image.");
+  }
+  };
+
   useEffect(() => {
     fetchDashboard();
   }, []);
@@ -42,7 +58,7 @@ const Dashboard = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         {history.length === 0 && <p>No images found.</p>}
         {history.map((item) => (
-          <div key={item._id} className="border rounded p-3 shadow-sm">
+          <div key={item._id} className="border rounded p-3 shadow-sm relative">
             <img
               src={item.imageUrl}
               alt={item.prompt}
@@ -59,6 +75,15 @@ const Dashboard = () => {
             >
               Download
             </a>
+
+            {/* Delete Button */}
+            <button
+              onClick={() => handleDelete(item._id)}
+              className="absolute top-2 right-2 bg-red-500 hover:bg-red-600 text-white p-1 rounded-full shadow-md cursor-pointer"
+              title="Delete Image"
+            >
+              <Trash2 size={16} />
+            </button>
           </div>
         ))}
       </div>

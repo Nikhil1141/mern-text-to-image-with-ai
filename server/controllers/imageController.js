@@ -71,4 +71,22 @@ const getImageHistory = async (req, res) => {
 };
 
 
-export { generateImage, getImageHistory };
+const deleteImage = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const userId = req.userId;
+
+    const deleted = await imageHistoryModel.findOneAndDelete({ _id: id, userId });
+
+    if (!deleted) {
+      return res.status(404).json({ success: false, message: "Image not found" });
+    }
+
+    res.json({ success: true, message: "Image deleted successfully" });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+};
+
+
+export { generateImage, getImageHistory, deleteImage };

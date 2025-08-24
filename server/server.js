@@ -22,6 +22,18 @@ await connectDB(); // Connect to MongoDB database // Call the function to connec
 app.use('/api/user', userRouter) // Use user routes for handling user-related requests  // /api/user is the base path for user-related routes
 app.use('/api/image', imageRouter); // Use image routes for handling image generation requests
 
+// app._router.stack.forEach((middleware) => {
+//   if (middleware.route) { // routes registered directly on the app
+//     console.log(middleware.route);
+//   } else if (middleware.name === 'router') { // router middleware 
+//     middleware.handle.stack.forEach((handler) => {
+//       const route = handler.route;
+//       route && console.log(Object.keys(route.methods), route.path);
+//     });
+//   }
+// });
+
+
 app.get('/', (req, res) => res.send('Hello World!'));
 
 app.listen(PORT, () => {
